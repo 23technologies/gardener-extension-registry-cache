@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    if: ${{ github.repository == 'gardener/gardener-extension-registry-cache' }}
+    if: ${{ github.repository == '23technologies/gardener-extension-registry-cache' }}
     uses: ./.github/workflows/build.yaml
     secrets: inherit
     permissions:
@@ -21,7 +21,7 @@ jobs:
       mode: release
 
   release-to-github-and-bump:
-    if: ${{ github.repository == 'gardener/gardener-extension-registry-cache' }}
+    if: ${{ github.repository == '23technologies/gardener-extension-registry-cache' }}
     uses: gardener/cc-utils/.github/workflows/release.yaml@master
     needs:
       - build
@@ -34,4 +34,3 @@ jobs:
       release-commit-target: branch
       next-version: ${{ inputs.next-version }}
       next-version-callback-action-path: .github/actions/prepare-release
-      slack-channel-id: C9CEBQPGE # #sap-tech-gardener
